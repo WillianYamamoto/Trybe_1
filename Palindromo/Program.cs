@@ -19,7 +19,12 @@ string texto_sem_espaco;
 Console.WriteLine("Digite a palavra a ser verificada como um Palíndromo (quando uma palavra é lida igual de trás para frente)");
  texto = Console.ReadLine();
 
-texto_sem_espaco = new string(texto.Where(c => !char.IsWhiteSpace(c)).ToArray());
+//texto_sem_espaco = new string(texto.Where(c => !char.IsWhiteSpace(c)).ToArray());
 textoinvertido = new string(texto.Reverse().ToArray());
-Console.WriteLine($"\nA palavra digitada é: {texto}");
-Console.WriteLine($"\nA palavra invertida é: {textoinvertido}");
+
+if (texto == textoinvertido)
+Console.WriteLine("O texto digitado é um Palíndromo");
+else Console.WriteLine("O texto digitado não é um palindromo");
+
+//Console.WriteLine($"\nA palavra digitada é: {texto}");
+//Console.WriteLine($"\nA palavra invertida é: {textoinvertido}");
