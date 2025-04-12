@@ -6,3 +6,6 @@
 //3 - Calcular qual a média desses alunos
 //4 - Exibir a média
 //5 - Exibir alunos com nota acima da média
+
+list<string> nome = new List<string>();
+list<double> nota = new List<double>();
