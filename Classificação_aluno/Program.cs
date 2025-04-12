@@ -6,6 +6,9 @@
 //3 - Calcular qual a média desses alunos - OK
 //4 - Exibir a média - OK 
 //5 - Exibir alunos com nota acima da média
+//6 - Melhorar programa
+//7 - Melhorar UI/UX
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
