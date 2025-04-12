@@ -39,7 +39,7 @@ while (vidas > 0 && !ganhou)
             Console.WriteLine("Nenhuma letra foi digitada!");
             Console.WriteLine("\nPressione qualquer tecla para continuar");
             Console.ReadKey();
-           
+            Console.Clear();
             continue;
         }
         else if (letra.Length > 1)
@@ -47,7 +47,8 @@ while (vidas > 0 && !ganhou)
             Console.WriteLine("Erro: Digite apenas UMA letra!");
             Console.WriteLine("\nPressione qualquer tecla para continuar");
             Console.ReadKey();
-            
+            Console.Clear();
+
             continue;
         }
         else if (!char.IsLetter(letra[0]))
@@ -55,7 +56,8 @@ while (vidas > 0 && !ganhou)
             Console.WriteLine("Erro: Digite apenas LETRAS!");
             Console.WriteLine("\nPressione qualquer tecla para continuar");
             Console.ReadKey();
-           
+            Console.Clear();
+
             continue;
         }
 
@@ -79,8 +81,23 @@ while (vidas > 0 && !ganhou)
         vidas--;
         Console.WriteLine($"A letra {chute} não está na palavra!");
     }
-
+    if (!letras_underscore.Contains('_'))
+    {
+        ganhou = true;
+    }
 
 }
-palavraEscondida = string.Join(" ", letras_underscore);
-Console.WriteLine(palavraEscondida);
+
+
+if (ganhou)
+{
+    Console.Clear();
+    Console.WriteLine("\n" + string.Join(" ", letras_underscore));
+    Console.WriteLine("Parabéns! Você acertou a palavra!\n");
+}
+else
+{
+    Console.Clear();
+    Console.WriteLine("\n" + string.Join(" ", letras_underscore));
+    Console.WriteLine($"Você perdeu! A palavra era: {palavra_secreta} tente novamente\n");
+}
