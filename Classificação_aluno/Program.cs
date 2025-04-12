@@ -3,15 +3,20 @@
 // Etapas:
 //1 - Crie uma lista que pega o nome dos alunos - OK
 //2 - Crie uma lista qeu pega as notas dos alunos - OK
-//3 - Calcular qual a média desses alunos
-//4 - Exibir a média
+//3 - Calcular qual a média desses alunos - OK
+//4 - Exibir a média - OK 
 //5 - Exibir alunos com nota acima da média
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
- var nomes = new List<string>();
+var nomes = new List<string>();
 var notas = new List<double>();
+
+double Calcular_média (List<double> nota)
+{
+    return nota.Count > 0 ? nota.Average() : 0;    
+}
 
 for (int i = 0; i < 3; i++)
 {
@@ -27,3 +32,5 @@ for (int i = 0; i < 3; i++)
 {
     Console.WriteLine($"{nomes[i]} - Nota: {notas[i]}");
 }
+
+Console.WriteLine($"\nMédia da turma: {Calcular_média(notas)}");
