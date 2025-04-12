@@ -2,7 +2,7 @@
 //1 - O usuário digitar somente uma letra (limitar o input para somente 1 letra) - OK 
 //2 - O programa deve mostrar a palavra como underscores (como uma palavra secreta) - OK
 // 3 - Deve revelar as letras conforme vai acertando - OK
-// 4 - O usuário tem um número limitado de tentativas, logo deve ser mostrado ao usuário a quantidade de vidas dele 
+// 4 - O usuário tem um número limitado de tentativas, logo deve ser mostrado ao usuário a quantidade de vidas dele - OK
 //5 - Melhorar programa 
 //6 - Melhorar UI/UX 
 
@@ -10,10 +10,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-string palavra_secreta = "MOTTU";
+List<string> banco_palavras = new List<string> // Lista de palavras que podem ser sorteadas no jogo
+{
+    "MOTTU",
+    "TRYBE",
+    "WILLIAN",
+    "TESTE",
+    "PROGRAMACAO",
+    "JOGO",
+    "BRASIL",
+    "MANUTENCAO",
+    "ARARA",
+    "FORCA"
+};
+
+Random random = new Random();
+string palavra_secreta = banco_palavras[random.Next(banco_palavras.Count)];//Para sortear uma palavra do banco de palavras
+
+
 char[] letras_underscore = new char[palavra_secreta.Length];
 int vidas = 5;
 bool ganhou = false;
+
 
 
 for (int i = 0; i < palavra_secreta.Length; i++) // Para escrever os "_ "
@@ -23,9 +41,10 @@ for (int i = 0; i < palavra_secreta.Length; i++) // Para escrever os "_ "
 
 string palavraEscondida = string.Join(" ", letras_underscore); // para colocar na tela a palavra escondida
 
-while (vidas > 0 && !ganhou)
+while (vidas > 0 && !ganhou) // Condição de loop do jogo ou ele perde todas as vidas ou ele ganha
 {
-    Console.WriteLine($"A palavra secreta tem:{palavra_secreta.Length} letras");
+    Console.Clear();
+    Console.WriteLine($"\nA palavra secreta tem:{palavra_secreta.Length} letras");
     Console.WriteLine("\n" + string.Join(" ", letras_underscore));
     Console.WriteLine($"Tentativas restantes: {vidas}");
 
@@ -80,6 +99,7 @@ while (vidas > 0 && !ganhou)
     {
         vidas--;
         Console.WriteLine($"A letra {chute} não está na palavra!");
+        Console.ReadKey();
     }
     if (!letras_underscore.Contains('_'))
     {
