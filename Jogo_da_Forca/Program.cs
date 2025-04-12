@@ -1,10 +1,10 @@
 ﻿//Ex Jogo da forca
-//1 - O usuário digitar somente uma letra (limitar o input para somente 1 letra)
+//1 - O usuário digitar somente uma letra (limitar o input para somente 1 letra) - OK 
 //2 - O programa deve mostrar a palavra como underscores (como uma palavra secreta) - OK
 // 3 - Deve revelar as letras conforme vai acertando - OK
 // 4 - O usuário tem um número limitado de tentativas, logo deve ser mostrado ao usuário a quantidade de vidas dele 
-//6 - Melhorar programa - OK
-//7 - Melhorar UI/UX - OK 
+//5 - Melhorar programa 
+//6 - Melhorar UI/UX 
 
 using System;
 using System.Collections.Generic;
@@ -23,17 +23,31 @@ for (int i = 0; i < palavra_secreta.Length; i++) // Para escrever os "_ "
 
 string palavraEscondida = string.Join(" ", letras_underscore);
 Console.WriteLine(palavraEscondida);
+char chute;
 
+while (true)
+{
 Console.WriteLine("Digite uma letra:");
-string letra = Console.ReadLine()?.ToUpper();
-
+string letra = Console.ReadLine()?.Trim().ToUpper();    
 if (string.IsNullOrEmpty(letra))
 {
     Console.WriteLine("Nenhuma letra foi digitada!");
-    return;
-};
+    continue;
+}
+else if (letra.Length > 1)
+{
+    Console.WriteLine("Erro: Digite apenas UMA letra!");
+    continue;
+}
+else if (!char.IsLetter(letra[0]))
+{
+    Console.WriteLine("Erro: Digite apenas LETRAS!");
+    continue;
+}
 
-char chute = letra[0];
+chute = letra[0];
+break;
+};
 
 for (int i = 0; i < palavra_secreta.Length; i++)
 {
