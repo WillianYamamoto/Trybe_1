@@ -6,7 +6,7 @@
 //3 - Calcular qual a média desses alunos - OK
 //4 - Exibir a média - OK 
 //5 - Exibir alunos com nota acima da média - OK 
-//6 - Melhorar programa
+//6 - Melhorar programa - OK
 //7 - Melhorar UI/UX
 
 using System;
@@ -16,30 +16,49 @@ using System.Linq;
 var nomes = new List<string>();
 var notas = new List<double>();
 
-double Calcular_média(List<double> nota)
+double CalcularMedia(List<double> nota)
 {
     return nota.Count > 0 ? nota.Average() : 0;
 }
 
-for (int i = 0; i < 3; i++)
+string nome_novo;
+do 
 {
-    Console.Write("Digite o nome do aluno(a): ");
-    nomes.Add(Console.ReadLine());
+    Console.Write("Digite o nome do aluno(a) ou fechar para encerrar: ");
+    nome_novo = Console.ReadLine();
 
-    Console.Write("Digite a nota do aluno(a): ");
-    notas.Add(double.Parse(Console.ReadLine()));
-}
+    if (nome_novo.ToUpper() != "FECHAR")
+    {
+        nomes.Add(nome_novo);
+        
+        Console.Write("Digite a nota do aluno(a): ");
+        if (double.TryParse(Console.ReadLine(), out double nota))
+        {
+            notas.Add(nota);
+        }
+        else
+        {
+            Console.WriteLine("Nota inválida. Digite o nome e nota correta.");
+            nomes.RemoveAt(nomes.Count - 1); // Remove o nome adicionado
+            continue;
+        }
+    }
+} while (nome_novo.ToUpper() != "FECHAR");
 
 Console.WriteLine("\nAlunos e notas:");
-for (int i = 0; i < 3; i++)
+for (int i = 0; i < nomes.Count; i++)
 {
     Console.WriteLine($"{nomes[i]} - Nota: {notas[i]}");
 }
-Console.WriteLine($"\nAlunos com nota acima da média: {Calcular_média(notas)}");
-for (int i = 0; i < 3; i++)
+
+double media = CalcularMedia(notas);
+Console.WriteLine($"\nMédia da turma: {media}");
+
+Console.WriteLine("\nAlunos com nota acima da média:");
+for (int i = 0; i < nomes.Count; i++)
 {
-    if (notas[i] > Calcular_média(notas))
+    if (notas[i] > media)
     {
-        Console.WriteLine($"{nomes[i]} - Nota: {notas[i]}\n");
+        Console.WriteLine($"{nomes[i]} - Nota: {notas[i]}");
     }
 }
