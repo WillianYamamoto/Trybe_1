@@ -5,7 +5,7 @@
 //2 - Crie uma lista qeu pega as notas dos alunos - OK
 //3 - Calcular qual a média desses alunos - OK
 //4 - Exibir a média - OK 
-//5 - Exibir alunos com nota acima da média
+//5 - Exibir alunos com nota acima da média - OK 
 //6 - Melhorar programa
 //7 - Melhorar UI/UX
 
@@ -16,9 +16,9 @@ using System.Linq;
 var nomes = new List<string>();
 var notas = new List<double>();
 
-double Calcular_média (List<double> nota)
+double Calcular_média(List<double> nota)
 {
-    return nota.Count > 0 ? nota.Average() : 0;    
+    return nota.Count > 0 ? nota.Average() : 0;
 }
 
 for (int i = 0; i < 3; i++)
@@ -35,5 +35,11 @@ for (int i = 0; i < 3; i++)
 {
     Console.WriteLine($"{nomes[i]} - Nota: {notas[i]}");
 }
-
-Console.WriteLine($"\nMédia da turma: {Calcular_média(notas)}");
+Console.WriteLine($"\nAlunos com nota acima da média: {Calcular_média(notas)}");
+for (int i = 0; i < 3; i++)
+{
+    if (notas[i] > Calcular_média(notas))
+    {
+        Console.WriteLine($"{nomes[i]} - Nota: {notas[i]}\n");
+    }
+}
