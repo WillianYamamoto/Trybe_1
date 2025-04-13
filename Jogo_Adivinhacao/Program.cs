@@ -24,22 +24,38 @@ while (palpite != num_secreto)
         Console.WriteLine($"Palpite válido: {palpite}");
         if (palpite > num_secreto)
         {
-            Console.WriteLine("\nSeu palpite é maior que o número secreto\n");
+            Console.WriteLine("\nSeu palpite é maior que o número secreto");
         }
         else if (palpite < num_secreto)
         {
-            Console.WriteLine("\nSeu palpite é menor que o número secreto\n");
+            Console.WriteLine("\nSeu palpite é menor que o número secreto");
+        }
+
+        int range = 0;
+        range = (palpite - num_secreto);
+        if (range >= 100)
+        {
+            Console.WriteLine("Palpite muito distante! (range de palpite: range >= 100)");
+        }
+        else if (range >= 50 && range < 100)
+        {
+            Console.WriteLine("Palpite distante! (range de palpite: 50<= range <100)");
+        }
+        else if (range >= 10 && range < 50)
+        {
+            Console.WriteLine("Palpite perto! (range de palpite: 10<= range <50)");
+        }
+        else if (range >0 && range < 10 )
+        {
+            Console.WriteLine("Palpite EXTREMAMENTE perto! (range de palpite: range < 10 )");
+        }
+        else
+        {
+            Console.WriteLine("Erro encontrado: Digite um número válido.");
+            Console.WriteLine("Pressione qualquer tecla para continuar");
+            Console.ReadKey();
+            Console.Clear();
         }
 
     }
-    else
-    {
-
-        Console.WriteLine("Erro encontrado: Digite um número válido.");
-        Console.WriteLine("Pressione qualquer tecla para continuar");
-        Console.ReadKey();
-        Console.Clear();
-    }
-
 }
-
