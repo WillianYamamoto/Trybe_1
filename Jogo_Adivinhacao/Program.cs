@@ -1,23 +1,23 @@
 ﻿// Jodo da adivinhação com dicas precisa 
 // 1 - o usuário deve chutar um número de 1 a 1000 - OK
 // 2 - após cada tentativa deve retornar se o número misterioso é maior ou menor que o chute - OK
-// 3 - Também deve informar se ele está muito distante (diferença>100), distante (diferença >50) ou perto (diferença <= 50)   
-// detalhes: Não tem um número exato de tentativas que ele deve ter
-//5 - Melhorar programa 
-//6 - Melhorar UI/UX  
+// 3 - Também deve informar se ele está muito distante (diferença>100), distante (diferença >50) ou perto (diferença <= 50) - OK   
+// detalhes: Não tem um número exato de tentativas que ele deve ter - OK
+//5 - Melhorar programa - OK
+//6 - Melhorar UI/UX - OK  
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 Random random = new Random();
-int num_secreto = random.Next(1, 1001);// Sorte um número entre 1 e 1000
+int num_secreto = random.Next(1, 1001);// Sorteia um número entre 1 e 1000
 int palpite = 0;
-Console.WriteLine($"O número secreto é: {num_secreto}");
+int tentativas = 0;
+
+//Console.WriteLine($"O número secreto é: {num_secreto}");// Linha para facilitar nos teste do programa
 
 Console.WriteLine("Bem vindo ao Jogo da advinhação, onde um número entre 1 e 1000 será sorteado e você deve acertá-lo");
 
-while (palpite != num_secreto)
+while (palpite != num_secreto)// Condição de repetição
 {
 
     Console.WriteLine("Digite seu palpite (deve ser um número entre 1 e 1000):");
@@ -25,8 +25,7 @@ while (palpite != num_secreto)
 
     if (int.TryParse(input, out palpite) && palpite >= 1 && palpite <= 1000)
     {
-
-        Console.WriteLine($"Palpite válido: {palpite}");
+        tentativas++; // aumenta o número de tentativa sempre que é colocado um valor válido
         if (palpite > num_secreto)
         {
             Console.WriteLine("\nSeu palpite é maior que o número secreto");
@@ -36,7 +35,8 @@ while (palpite != num_secreto)
             Console.WriteLine("\nSeu palpite é menor que o número secreto");
         }
 
-        int range = Math.Abs(palpite - num_secreto);
+
+        int range = Math.Abs(palpite - num_secreto);// para saber o range em módulo entre o chute e o número secreto
         if (range >= 100)
         {
             Console.WriteLine("Palpite muito distante! (range de palpite: range >= 100)\n");
@@ -56,9 +56,9 @@ while (palpite != num_secreto)
         Console.WriteLine("Pressione qualquer tecla para continuar");
         Console.ReadKey();
         Console.Clear();
-
     }
-    else
+
+    else // Caso coloque um valor que não é válido UI?UX
     {
 
         Console.WriteLine("Erro encontrado: Digite um número válido!");
@@ -68,7 +68,9 @@ while (palpite != num_secreto)
 
     }
 }
+
 Console.Clear();
 Console.WriteLine("\nPARABÉNS! Você acertou o número secreto!");
+Console.WriteLine($"Número de tentativas até acertar o número secreto: {tentativas}");
 Console.WriteLine("\nPressione qualquer tecla para finalizar o programa");
 Console.ReadKey();
