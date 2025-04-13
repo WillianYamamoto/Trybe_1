@@ -68,3 +68,7 @@ while (palpite != num_secreto)
 
     }
 }
+Console.Clear();
+Console.WriteLine("\nPARABÉNS! Você acertou o número secreto!");
+Console.WriteLine("\nPressione qualquer tecla para finalizar o programa");
+Console.ReadKey();
