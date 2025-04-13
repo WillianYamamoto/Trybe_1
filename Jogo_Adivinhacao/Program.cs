@@ -6,8 +6,6 @@
 //5 - Melhorar programa - OK
 //6 - Melhorar UI/UX - OK  
 
-
-
 Random random = new Random();
 int num_secreto = random.Next(1, 1001);// Sorteia um número entre 1 e 1000
 int palpite = 0;
@@ -23,7 +21,7 @@ while (palpite != num_secreto)// Condição de repetição
     Console.WriteLine("Digite seu palpite (deve ser um número entre 1 e 1000):");
     string input = Console.ReadLine();
 
-    if (int.TryParse(input, out palpite) && palpite >= 1 && palpite <= 1000)
+    if (int.TryParse(input, out palpite) && palpite >= 1 && palpite <= 1000)// Tranforma a string em int e valida ela
     {
         tentativas++; // aumenta o número de tentativa sempre que é colocado um valor válido
         if (palpite > num_secreto)
@@ -35,7 +33,7 @@ while (palpite != num_secreto)// Condição de repetição
             Console.WriteLine("\nSeu palpite é menor que o número secreto");
         }
 
-
+        //Para saber se o palpite está perto ou não
         int range = Math.Abs(palpite - num_secreto);// para saber o range em módulo entre o chute e o número secreto
         if (range >= 100)
         {
@@ -65,7 +63,6 @@ while (palpite != num_secreto)// Condição de repetição
         Console.WriteLine("Pressione qualquer tecla para continuar");
         Console.ReadKey();
         Console.Clear();
-
     }
 }
 
