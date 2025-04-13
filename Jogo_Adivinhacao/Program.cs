@@ -18,10 +18,19 @@ while (palpite != num_secreto)
 {
     Console.WriteLine("Digite seu palpite (deve ser um número entre 1 e 1000):");
     string input = Console.ReadLine();
-    if (int.TryParse(input, out palpite))
+    if (int.TryParse(input, out palpite) && palpite >= 1 && palpite <= 1000)
     {
 
         Console.WriteLine($"Palpite válido: {palpite}");
+        if (palpite > num_secreto)
+        {
+            Console.WriteLine("\nSeu palpite é maior que o número secreto\n");
+        }
+        else if (palpite < num_secreto)
+        {
+            Console.WriteLine("\nSeu palpite é menor que o número secreto\n");
+        }
+
     }
     else
     {
@@ -30,14 +39,6 @@ while (palpite != num_secreto)
         Console.WriteLine("Pressione qualquer tecla para continuar");
         Console.ReadKey();
         Console.Clear();
-    }
-    if (palpite > num_secreto)
-    {
-        Console.WriteLine("Seu palpite é maior que o número secreto");
-    }
-    else if (palpite < num_secreto)
-    {
-        Console.WriteLine("Seu palpite é menor que o número secreto");
     }
 
 }
