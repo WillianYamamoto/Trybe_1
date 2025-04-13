@@ -6,6 +6,9 @@
 //5 - Melhorar programa 
 //6 - Melhorar UI/UX  
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 Random random = new Random();
 int num_secreto = random.Next(1, 1001);// Sorte um número entre 1 e 1000
@@ -16,8 +19,10 @@ Console.WriteLine("Bem vindo ao Jogo da advinhação, onde um número entre 1 e 
 
 while (palpite != num_secreto)
 {
+
     Console.WriteLine("Digite seu palpite (deve ser um número entre 1 e 1000):");
     string input = Console.ReadLine();
+
     if (int.TryParse(input, out palpite) && palpite >= 1 && palpite <= 1000)
     {
 
@@ -31,31 +36,35 @@ while (palpite != num_secreto)
             Console.WriteLine("\nSeu palpite é menor que o número secreto");
         }
 
-        int range = 0;
-        range = (palpite - num_secreto);
+        int range = Math.Abs(palpite - num_secreto);
         if (range >= 100)
         {
-            Console.WriteLine("Palpite muito distante! (range de palpite: range >= 100)");
+            Console.WriteLine("Palpite muito distante! (range de palpite: range >= 100)\n");
         }
         else if (range >= 50 && range < 100)
         {
-            Console.WriteLine("Palpite distante! (range de palpite: 50<= range <100)");
+            Console.WriteLine("Palpite distante! (range de palpite: 50<= range <100)\n");
         }
         else if (range >= 10 && range < 50)
         {
-            Console.WriteLine("Palpite perto! (range de palpite: 10<= range <50)");
+            Console.WriteLine("Palpite perto! (range de palpite: 10<= range <50)\n");
         }
-        else if (range >0 && range < 10 )
+        else if (range > 0 && range < 10)
         {
             Console.WriteLine("Palpite EXTREMAMENTE perto! (range de palpite: range < 10 )");
         }
-        else
-        {
-            Console.WriteLine("Erro encontrado: Digite um número válido.");
-            Console.WriteLine("Pressione qualquer tecla para continuar");
-            Console.ReadKey();
-            Console.Clear();
-        }
+        Console.WriteLine("Pressione qualquer tecla para continuar");
+        Console.ReadKey();
+        Console.Clear();
+
+    }
+    else
+    {
+
+        Console.WriteLine("Erro encontrado: Digite um número válido!");
+        Console.WriteLine("Pressione qualquer tecla para continuar");
+        Console.ReadKey();
+        Console.Clear();
 
     }
 }
